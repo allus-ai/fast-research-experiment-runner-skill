@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "prompt": "Use $research-experiment-runner to evaluate a new Hugging Face text-generation model on five prompts, create a Gradio demo, and produce a report.",
+    "expected": "Scaffold a local-first experiment under the managed storage root, source env.sh, run a smoke test before scaling, capture env/commands/metrics/examples, and render a report with a Gradio start command."
+  },
+  {
+    "id": 2,
+    "prompt": "Use $research-experiment-runner to reproduce the core claim of a new image segmentation paper on a tiny local sample set.",
+    "expected": "Inspect primary sources, define the falsifiable claim, use the vision playbook, run a tiny smoke test, save overlays/examples, record limitations, and avoid large downloads or long training without approval."
+  },
+  {
+    "id": 3,
+    "prompt": "Use $research-experiment-runner to clean old experiments and model caches because my laptop disk is almost full.",
+    "expected": "Show cleanup.py dry-run first, explain experiments/venvs/cache targets under ~/.codex/research-experiment-runner, then delete only with explicit user approval or explicit deletion request."
+  },
+  {
+    "id": 4,
+    "prompt": "Use $research-experiment-runner to run a quick local experiment on my MacBook Pro, but first find the best current acceleration library for my hardware.",
+    "expected": "Capture hardware.json, browse current official or primary sources for the detected Intel Mac/AMD GPU and task runtime, write acceleration.md with selected backend and fallback, then run the smoke test only after the acceleration decision is recorded."
+  },
+  {
+    "id": 5,
+    "prompt": "Use $research-experiment-runner to try a newly released 12B model locally and tell me if it is worth keeping on my laptop.",
+    "expected": "Resolve the exact model ID, estimate download and memory cost before approval, prefer a small GGUF quantization, run bounded smoke prompts with timeouts, compare CPU/GPU only after baseline works, then recommend adopt/investigate/reject with cleanup cost."
+  },
+  {
+    "id": 6,
+    "prompt": "Use $research-experiment-runner to clean up after a local model test but keep the conclusion.",
+    "expected": "Copy report.md to a user-facing output location when useful, run cleanup.py dry-run, delete experiments/venvs/cache/downloads only after explicit cleanup request, and confirm reclaimed space."
+  }
+]
