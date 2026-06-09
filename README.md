@@ -4,7 +4,7 @@
 
 </div>
 
-![Fast Research Experiment Runner.skill](assets/banner.jpg)
+![Fast Research Experiment Runner.skill](assets/banner.svg)
 
 <div align="center">
 
@@ -51,7 +51,7 @@ npx skills add allus-ai/fast-research-experiment-runner-skill
 
 ## Core Loop
 
-![Local-first validation loop](assets/validation-loop.jpg)
+![Local-first validation loop](assets/validation-loop.svg)
 
 每次实验都围绕四个问题收敛：
 
