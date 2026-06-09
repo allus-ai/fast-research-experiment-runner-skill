@@ -1,6 +1,6 @@
 # Research Experiment Runner Skill
 
-![Research Experiment Runner cover](assets/cover.png)
+![Research Experiment Runner cover](assets/cover.svg)
 
 A Codex skill for trying new AI models locally without filling your laptop with forgotten model files, virtual environments, and caches.
 
