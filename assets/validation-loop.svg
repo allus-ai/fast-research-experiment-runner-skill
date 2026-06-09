@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Local-first validation loop</title>
+  <desc id="desc">Six-stage local-first validation loop for AI model experiments.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#030711"/>
+      <stop offset="0.6" stop-color="#08111f"/>
+      <stop offset="1" stop-color="#02040a"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="0.5" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <style>
+      .sans { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .panel { fill: #0b1220; stroke: #334155; stroke-width: 1.4; }
+      .muted { fill: #94a3b8; }
+      .tiny { font-size: 12px; }
+      .small { font-size: 15px; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <text x="600" y="90" text-anchor="middle" class="sans" font-size="54" font-weight="850" fill="#f8fafc">Local-first validation loop</text>
+
+  <g class="sans">
+    <rect x="52" y="136" width="148" height="286" rx="18" class="panel"/>
+    <rect x="220" y="136" width="148" height="286" rx="18" class="panel"/>
+    <rect x="388" y="136" width="148" height="286" rx="18" class="panel"/>
+    <rect x="556" y="136" width="148" height="286" rx="18" class="panel"/>
+    <rect x="724" y="136" width="148" height="286" rx="18" class="panel"/>
+    <rect x="892" y="136" width="148" height="286" rx="18" class="panel"/>
+    <path d="M200 279 H220 M368 279 H388 M536 279 H556 M704 279 H724 M872 279 H892" stroke="#38bdf8" stroke-width="4"/>
+    <path d="M52 445 C52 520 1040 520 1040 445" fill="none" stroke="url(#edge)" stroke-width="6" stroke-linecap="round"/>
+
+    <g transform="translate(52 136)">
+      <circle cx="34" cy="34" r="22" fill="#1d4ed8"/><text x="28" y="42" font-size="24" font-weight="800" fill="#fff">1</text>
+      <text x="70" y="42" font-size="24" font-weight="800" fill="#f8fafc">Resolve</text>
+      <rect x="18" y="86" width="112" height="34" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="29" y="108" class="mono tiny" fill="#cbd5e1">model card</text>
+      <rect x="18" y="134" width="112" height="34" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="29" y="156" class="mono tiny" fill="#cbd5e1">paper / repo</text>
+      <rect x="18" y="182" width="112" height="34" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="29" y="204" class="mono tiny" fill="#cbd5e1">dataset</text>
+    </g>
+
+    <g transform="translate(220 136)">
+      <circle cx="34" cy="34" r="22" fill="#2563eb"/><text x="28" y="42" font-size="24" font-weight="800" fill="#fff">2</text>
+      <text x="70" y="42" font-size="24" font-weight="800" fill="#f8fafc">Scout</text>
+      <rect x="18" y="86" width="112" height="34" rx="8" fill="#10251c" stroke="#166534"/>
+      <text x="34" y="108" class="mono tiny" fill="#86efac">MLX / MPS</text>
+      <rect x="18" y="134" width="112" height="34" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="34" y="156" class="mono tiny" fill="#cbd5e1">CUDA</text>
+      <rect x="18" y="182" width="112" height="34" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="34" y="204" class="mono tiny" fill="#cbd5e1">CPU fallback</text>
+    </g>
+
+    <g transform="translate(388 136)">
+      <circle cx="34" cy="34" r="22" fill="#0891b2"/><text x="28" y="42" font-size="24" font-weight="800" fill="#fff">3</text>
+      <text x="70" y="42" font-size="24" font-weight="800" fill="#f8fafc">Estimate</text>
+      <text x="18" y="104" class="mono small" fill="#cbd5e1">download</text>
+      <rect x="18" y="118" width="112" height="8" rx="4" fill="#1e293b"/><rect x="18" y="118" width="76" height="8" rx="4" fill="#3b82f6"/>
+      <text x="18" y="158" class="mono small" fill="#cbd5e1">memory</text>
+      <rect x="18" y="172" width="112" height="8" rx="4" fill="#1e293b"/><rect x="18" y="172" width="82" height="8" rx="4" fill="#22c55e"/>
+      <rect x="18" y="216" width="112" height="38" rx="8" fill="#3b2508" stroke="#f59e0b"/>
+      <text x="29" y="240" class="mono tiny" fill="#fef3c7">approval gate</text>
+    </g>
+
+    <g transform="translate(556 136)">
+      <circle cx="34" cy="34" r="22" fill="#16a34a"/><text x="28" y="42" font-size="24" font-weight="800" fill="#fff">4</text>
+      <text x="70" y="42" font-size="24" font-weight="800" fill="#f8fafc">Smoke</text>
+      <rect x="18" y="88" width="112" height="84" rx="8" fill="#061b12" stroke="#166534"/>
+      <text x="28" y="112" class="mono tiny" fill="#86efac">$ run_smoke.py</text>
+      <text x="28" y="136" class="mono tiny" fill="#86efac">5 prompts</text>
+      <text x="28" y="160" class="mono tiny" fill="#86efac">passed</text>
+      <text x="18" y="218" class="mono small" fill="#cbd5e1">tokens/s 42.7</text>
+      <path d="M20 246 L42 235 L58 244 L78 228 L98 238 L124 220" fill="none" stroke="#22c55e" stroke-width="3"/>
+    </g>
+
+    <g transform="translate(724 136)">
+      <circle cx="34" cy="34" r="22" fill="#22c55e"/><text x="28" y="42" font-size="24" font-weight="800" fill="#fff">5</text>
+      <text x="70" y="42" font-size="24" font-weight="800" fill="#f8fafc">Report</text>
+      <rect x="18" y="88" width="112" height="148" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="30" y="116" class="mono tiny" fill="#cbd5e1">report.md</text>
+      <text x="30" y="148" class="sans" font-size="30" font-weight="850" fill="#f8fafc">86.6%</text>
+      <path d="M30 188 L48 180 L62 185 L82 168 L100 156" fill="none" stroke="#22c55e" stroke-width="3"/>
+      <rect x="30" y="204" width="76" height="12" rx="4" fill="#1e293b"/>
+    </g>
+
+    <g transform="translate(892 136)">
+      <circle cx="34" cy="34" r="22" fill="#f59e0b"/><text x="28" y="42" font-size="24" font-weight="800" fill="#fff">6</text>
+      <text x="70" y="42" font-size="24" font-weight="800" fill="#f8fafc">Cleanup</text>
+      <rect x="18" y="88" width="112" height="34" rx="8" fill="#111827" stroke="#334155"/><text x="30" y="110" class="mono tiny" fill="#cbd5e1">experiments</text>
+      <rect x="18" y="136" width="112" height="34" rx="8" fill="#111827" stroke="#334155"/><text x="30" y="158" class="mono tiny" fill="#cbd5e1">venvs</text>
+      <rect x="18" y="184" width="112" height="34" rx="8" fill="#111827" stroke="#334155"/><text x="30" y="206" class="mono tiny" fill="#cbd5e1">cache</text>
+      <rect x="18" y="236" width="112" height="28" rx="8" fill="#3b2508" stroke="#f59e0b"/><text x="31" y="254" class="mono tiny" fill="#fef3c7">dry-run first</text>
+    </g>
+  </g>
+
+  <g transform="translate(56 560)" class="sans">
+    <rect width="620" height="76" rx="14" fill="#0f172a" stroke="#334155"/>
+    <text x="22" y="31" font-size="22" font-weight="750" fill="#f8fafc">Evidence captured</text>
+    <text x="240" y="31" class="small muted">commands</text>
+    <text x="365" y="31" class="small muted">environment</text>
+    <text x="500" y="31" class="small muted">metrics</text>
+    <text x="240" y="58" class="small muted">examples</text>
+    <text x="365" y="58" class="small muted">failures</text>
+    <text x="500" y="58" class="small muted">recommend</text>
+  </g>
+  <g transform="translate(760 560)">
+    <rect width="330" height="76" rx="14" fill="#0f172a" stroke="#334155"/>
+    <text x="22" y="32" class="mono small" fill="#86efac">$ render_report.py ./exp</text>
+    <text x="22" y="58" class="mono tiny" fill="#94a3b8">report saved -> experiments/report.md</text>
+  </g>
+</svg>
