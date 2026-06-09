@@ -4,7 +4,7 @@ English
 
 </div>
 
-![Research Experiment Runner Skill](assets/banner.jpg)
+![Research Experiment Runner Skill](assets/banner.svg)
 
 <div align="center">
 
@@ -52,7 +52,7 @@ Research Experiment Runner turns each trial into a compact experiment package:
 
 ## Core Loop
 
-![Local-first validation loop](assets/validation-loop.jpg)
+![Local-first validation loop](assets/validation-loop.svg)
 
 Each run answers four practical questions:
 
