@@ -87,7 +87,7 @@ python scripts/cleanup.py --dry-run
 
 9. Improve the skill from real usage.
    - Append friction, missing playbooks, cleanup problems, and useful defaults to `~/.codex/research-experiment-runner/improvement-log.md`.
-   - When the user asks for optimization, use `$darwin-skill` to score and improve this skill's `SKILL.md`.
+   - When the user asks for optimization, evaluate this skill against the logged evidence and improve `SKILL.md` only after review.
    - Do not auto-edit this skill after every experiment; collect evidence first, then optimize with an explicit user request or after at least 3 logged experiments.
 
 ## Reference Loading
