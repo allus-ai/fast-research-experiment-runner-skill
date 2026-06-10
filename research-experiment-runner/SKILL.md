@@ -1,6 +1,6 @@
 ---
 name: research-experiment-runner
-description: Standardized local-first experimental validation for new AI models, Hugging Face models, GGUF/local LLMs, research papers, benchmark claims, training recipes, prompts, multimodal/vision systems, and general ML methods. Use when Codex needs to identify the correct model, scout hardware-specific acceleration, run a small reproducible smoke test, compare CPU/GPU/runtime choices, create a local demo, capture environment/logs/metrics, clean model caches safely, and produce a readable experiment report.
+description: Standardized local-first experimental validation for new AI models, Hugging Face models, GGUF/local LLMs, research papers, benchmark claims, training recipes, prompts, multimodal/vision systems, and general ML methods. Use in Codex, Claude Code, or any local agent environment when the agent needs to identify the correct model, scout hardware-specific acceleration, run a small reproducible smoke test, compare CPU/GPU/runtime choices, create a local demo, capture environment/logs/metrics, clean model caches safely, and produce a readable experiment report.
 ---
 
 # Research Experiment Runner
@@ -9,10 +9,10 @@ description: Standardized local-first experimental validation for new AI models,
 
 Run local-first, quick-validation experiments unless the user explicitly asks for full reproduction or remote execution. Treat every experiment as a small reproducible package with a report, optional demo, and one-command cleanup path.
 
-Keep every experiment, virtual environment, model cache, package cache, download, temporary file, and improvement log under one managed root:
+Keep every experiment, virtual environment, model cache, package cache, download, temporary file, and improvement log under one managed root. Use `RESEARCH_EXPERIMENT_RUNNER_HOME` when set; otherwise default to:
 
 ```text
-~/.codex/research-experiment-runner/
+~/.research-experiment-runner/
 ```
 
 Never install experiment dependencies globally. Before running installs, model downloads, or demos, source the experiment env file:
@@ -86,7 +86,7 @@ python scripts/cleanup.py --dry-run
    - For local model tests, state whether the model is practical for this machine, not only whether it technically runs.
 
 9. Improve the skill from real usage.
-   - Append friction, missing playbooks, cleanup problems, and useful defaults to `~/.codex/research-experiment-runner/improvement-log.md`.
+   - Append friction, missing playbooks, cleanup problems, and useful defaults to `$RESEARCH_EXPERIMENT_RUNNER_HOME/improvement-log.md` or `~/.research-experiment-runner/improvement-log.md`.
    - When the user asks for optimization, evaluate this skill against the logged evidence and improve `SKILL.md` only after review.
    - Do not auto-edit this skill after every experiment; collect evidence first, then optimize with an explicit user request or after at least 3 logged experiments.
 
@@ -102,7 +102,7 @@ python scripts/cleanup.py --dry-run
 ## Operating Rules
 
 - Do not start long-running training, large downloads, or paid cloud work without explicit user approval.
-- Do not write experiment artifacts or dependency caches outside `~/.codex/research-experiment-runner/` unless the user explicitly requests it.
+- Do not write experiment artifacts or dependency caches outside `RESEARCH_EXPERIMENT_RUNNER_HOME` or `~/.research-experiment-runner/` unless the user explicitly requests it.
 - Do not install dependencies or start the experiment before writing `<experiment-dir>/acceleration.md`.
 - Do not keep multi-megabyte failed stdout logs. Save an excerpt and delete the oversized file.
 - Do not claim a model is good for local use just because it starts. Report speed, memory, correctness, and cleanup cost.
