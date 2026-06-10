@@ -12,7 +12,7 @@
 
 **把新模型测试变成一次可复现、可度量、可清理的小实验。**
 
-一个给 Codex 用的 local-first 实验 skill：快速验证 Hugging Face 模型、GGUF / 本地 LLM、论文 claim、训练配方、prompt、视觉/多模态系统，不再让模型文件、虚拟环境、缓存和日志散落在电脑各处。
+一个面向 Codex、Claude Code 和其他本地 agent 工具的 local-first 实验 skill：快速验证 Hugging Face 模型、GGUF / 本地 LLM、论文 claim、训练配方、prompt、视觉/多模态系统，不再让模型文件、虚拟环境、缓存和日志散落在电脑各处。
 
 它回答一个每天都会遇到的问题：
 
@@ -20,6 +20,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-Compatible-blueviolet)](https://skills.sh)
+[![Agent Agnostic](https://img.shields.io/badge/agent--agnostic-Codex%20%7C%20Claude%20Code-0EA5E9)](#quick-start)
 [![Local First](https://img.shields.io/badge/local--first-experiments-10B981)](#local-first-by-default)
 [![Cleanup Ready](https://img.shields.io/badge/cleanup-ready-2563EB)](#storage--cleanup)
 
@@ -43,7 +44,7 @@ npx skills add allus-ai/fast-research-experiment-runner-skill
 - 用一张完整 pipeline 图替代纯 Mermaid，让核心循环更像产品说明
 - 把「是否值得留下」拆成运行、速度、质量、清理成本四类证据
 - 强化 local-first、primary-source-first、cleanup-ready 三条主线
-- README 主语言改为中文，并保留英文版入口
+- 不绑定单一 agent 客户端，Codex、Claude Code 或其他支持技能/自定义指令的工具都可以复用
 
 ---
 
@@ -105,10 +106,10 @@ Fast Research Experiment Runner 把每一次试模型都压缩成一个小实验
 
 ## Local First By Default
 
-所有实验状态默认放在：
+所有实验状态默认放在一个可配置的托管根目录。推荐设置：
 
 ```text
-~/.codex/research-experiment-runner/
+RESEARCH_EXPERIMENT_RUNNER_HOME=~/.research-experiment-runner
 ```
 
 默认结构：
@@ -121,7 +122,7 @@ downloads/     explicit model/runtime downloads
 tmp/           temporary files
 ```
 
-实验依赖不全局安装。安装依赖或运行下载前，先进入实验环境：
+如果运行环境已经有自己的 agent 工作根目录，也可以把 `RESEARCH_EXPERIMENT_RUNNER_HOME` 指到对应位置，例如 Codex 环境可继续使用 `~/.codex/research-experiment-runner/`。实验依赖不全局安装。安装依赖或运行下载前，先进入实验环境：
 
 ```bash
 source <experiment-dir>/env.sh
@@ -159,35 +160,36 @@ source <experiment-dir>/env.sh
 
 ## Quick Start
 
-安装：
+Codex / skills CLI 安装：
 
 ```bash
 npx skills add allus-ai/fast-research-experiment-runner-skill
 ```
 
-或者手动复制：
+Claude Code / 其他 agent 手动安装：
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R research-experiment-runner ~/.codex/skills/
+cp -R research-experiment-runner <your-agent-skills-dir>/
 ```
 
-让 Codex 测一个新模型：
+如果某个工具没有正式 skill 目录，也可以把 `research-experiment-runner/SKILL.md` 作为项目级或全局自定义指令使用。
+
+让任意 agent 测一个新模型：
 
 ```text
-Use $research-experiment-runner to test the latest 4B Qwen model locally.
+Use the research-experiment-runner skill to test the latest 4B Qwen model locally.
 ```
 
 验证论文核心 claim：
 
 ```text
-Use $research-experiment-runner to reproduce the core claim of this segmentation paper on a tiny local sample set.
+Use the research-experiment-runner skill to reproduce the core claim of this segmentation paper on a tiny local sample set.
 ```
 
 清理旧实验：
 
 ```text
-Use $research-experiment-runner to clean old experiments and model caches, but keep the reports.
+Use the research-experiment-runner skill to clean old experiments and model caches, but keep the reports.
 ```
 
 ---
@@ -197,13 +199,13 @@ Use $research-experiment-runner to clean old experiments and model caches, but k
 先预览：
 
 ```bash
-python3 ~/.codex/skills/research-experiment-runner/scripts/cleanup.py --dry-run --all --include-cache
+python3 <skill-dir>/scripts/cleanup.py --dry-run --all --include-cache
 ```
 
 确认后删除：
 
 ```bash
-python3 ~/.codex/skills/research-experiment-runner/scripts/cleanup.py --all --include-cache
+python3 <skill-dir>/scripts/cleanup.py --all --include-cache
 ```
 
 清理脚本会打印将要删除的路径和预计可回收空间。
@@ -214,7 +216,7 @@ python3 ~/.codex/skills/research-experiment-runner/scripts/cleanup.py --all --in
 
 - 不经显式确认，不启动长时间训练、大下载、付费云计算、driver 安装或 native toolchain build。
 - 不全局安装实验依赖。
-- 不把实验 artifacts 写到 `~/.codex/research-experiment-runner/` 之外，除非用户明确要求。
+- 不把实验 artifacts 写到 `RESEARCH_EXPERIMENT_RUNNER_HOME` 之外，除非用户明确要求。
 - 不把「demo 能跑」当作「实验成功」。
 - 不隐藏失败尝试。
 - 不保留多 MB 的失败 stdout 日志；只保存小片段并删除超大文件。
