@@ -12,12 +12,13 @@ English
 
 **Test new AI models like a small, reproducible research experiment.**
 
-A Codex skill for quickly validating Hugging Face models, GGUF/local LLMs, research claims, training recipes, prompts, and multimodal systems without scattering downloads, virtualenvs, logs, and caches across your laptop.
+An agent-agnostic local-first skill for Codex, Claude Code, and other local agent tools. It validates Hugging Face models, GGUF/local LLMs, research claims, training recipes, prompts, and multimodal systems without scattering downloads, virtualenvs, logs, and caches across your laptop.
 
 It is built for the everyday question: **"A new model just came out. Can my machine run it, and is it worth keeping?"**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-Compatible-blueviolet)](https://skills.sh)
+[![Agent Agnostic](https://img.shields.io/badge/agent--agnostic-Codex%20%7C%20Claude%20Code-0EA5E9)](#quick-start)
 [![Local First](https://img.shields.io/badge/local--first-experiments-10B981)](#local-first-by-default)
 [![Cleanup Ready](https://img.shields.io/badge/cleanup-ready-2563EB)](#storage--cleanup)
 
@@ -93,10 +94,10 @@ This skill makes local AI experimentation boring in the right way: small first, 
 
 ## Local First By Default
 
-All experiment state lives under:
+All experiment state lives under a configurable managed root. Recommended default:
 
 ```text
-~/.codex/research-experiment-runner/
+RESEARCH_EXPERIMENT_RUNNER_HOME=~/.research-experiment-runner
 ```
 
 Default layout:
@@ -111,16 +112,28 @@ tmp/           temporary files
 
 ---
 
+If your agent already has a managed workspace root, point `RESEARCH_EXPERIMENT_RUNNER_HOME` there. Codex users can keep using `~/.codex/research-experiment-runner/`.
+
 ## Quick Start
+
+Codex / skills CLI:
 
 ```bash
 npx skills add allus-ai/fast-research-experiment-runner-skill
 ```
 
-Ask Codex:
+Claude Code / other agents:
+
+```bash
+cp -R research-experiment-runner <your-agent-skills-dir>/
+```
+
+If a tool does not expose a formal skills directory, use `research-experiment-runner/SKILL.md` as a project-level or global custom instruction.
+
+Ask any agent:
 
 ```text
-Use $research-experiment-runner to test the latest 4B Qwen model locally.
+Use the research-experiment-runner skill to test the latest 4B Qwen model locally.
 ```
 
 ---
@@ -130,13 +143,13 @@ Use $research-experiment-runner to test the latest 4B Qwen model locally.
 Always preview first:
 
 ```bash
-python3 ~/.codex/skills/research-experiment-runner/scripts/cleanup.py --dry-run --all --include-cache
+python3 <skill-dir>/scripts/cleanup.py --dry-run --all --include-cache
 ```
 
 Delete after review:
 
 ```bash
-python3 ~/.codex/skills/research-experiment-runner/scripts/cleanup.py --all --include-cache
+python3 <skill-dir>/scripts/cleanup.py --all --include-cache
 ```
 
 ---
