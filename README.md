@@ -37,9 +37,7 @@ npx skills add allus-ai/fast-research-experiment-runner-skill
 
 ---
 
-## What's New
-
-这版 README 参考了 [`alchaincyf/darwin-skill`](https://github.com/alchaincyf/darwin-skill) 的 GitHub 主页结构，但视觉和叙事改成了模型实验场景：
+## What It Optimizes
 
 - 顶部改成强视觉 banner，第一眼就知道这是「本地模型实验控制台」
 - 用一张完整 pipeline 图替代纯 Mermaid，让核心循环更像产品说明
@@ -245,14 +243,6 @@ python3 ~/.codex/skills/research-experiment-runner/scripts/cleanup.py --all --in
 - `test-prompts.json` 负责回归测试和行为样例
 - `references/` 负责实验协议、任务 playbook、demo、存储清理和加速侦察
 - `scripts/` 负责 scaffold、hardware profile、env capture、report render 和 cleanup
-
-它也适合和 [`darwin-skill`](https://github.com/alchaincyf/darwin-skill) 配合：先用真实模型实验积累 friction，再用 Darwin 类工具根据证据优化 skill。
-
----
-
-## Credits
-
-视觉和 README 页面节奏参考了 [`alchaincyf/darwin-skill`](https://github.com/alchaincyf/darwin-skill)：强首屏图、清晰定位、可视化核心循环、原则表和操作边界。本文案和图片重新面向「本地模型实验验证」场景设计。
 
 ---
 
